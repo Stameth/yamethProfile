@@ -1,0 +1,374 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10%;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100px; /* Set a height */
+  z-index: 1000;
+}
+
+/* Underline active link */
+.nav-link.active {
+  text-decoration: underline;
+}
+
+/* Offset content to prevent overlap */
+.main-content,
+#container {
+  margin-top: 80px; /* Offset by the height of the navbar */
+}
+
+.navbar-logo img {
+  height: 100px;
+}
+
+.navbar-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li {
+  margin-left: 20px;
+}
+
+.navbar-menu li:hover {
+  text-decoration: underline;
+}
+
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+/* Burger menu icon */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.burger-menu .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+.burger-menu.active .bar1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active .bar2 {
+  opacity: 0; /* Hide the middle bar */
+}
+
+.burger-menu.active .bar3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Main content container */
+.main-content {
+  display: flex;
+  flex-direction: row; /* Row by default */
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  gap: 20px;
+  height: 90vh; /* Adjusts to 90% of viewport */
+}
+
+/* Top left and right divs */
+.left-div,
+.right-div {
+  width: 50%; /* Each takes half the screen */
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.left-div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Left Div: Personal Info */
+.personal-info {
+  text-align: left; /* Align text to the left */
+  margin-top: 15px; /* Adds space between the image and personal info */
+  width: 90%; /* Matches image width */
+}
+
+.personal-info p {
+  margin: 5px 0; /* Space between personal details */
+  color: #333;
+}
+
+/* Button Styling */
+.external-link-btn {
+  display: block;
+  text-align: center;
+  width: 100%; /* Matches the width of the image */
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.external-link-btn:hover {
+  background-color: #555;
+}
+
+/* Image container with hover effect */
+.image-container {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.left-div-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s linear, filter 0.5s linear;
+}
+
+.image-container:hover .left-div-image {
+  transform: scale(1.1);
+  filter: brightness(0.7);
+}
+
+/* Overlay Text */
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.image-container:hover .overlay-text {
+  opacity: 1;
+}
+
+/* Right posts section */
+.right-posts-section {
+  margin-top: 20px;
+}
+
+.right-posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.right-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(50% - 7.5px);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  //border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.right-post img {
+  width: 60px;
+  height: 60px;
+  //border-radius: 50%;
+  margin-right: 15px;
+}
+
+.post-info h3 {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.post-info .subtitle {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+/* Container with fade-in divs */
+.container {
+  display: flex;
+  justify-content: center; /* Centers contents horizontally */
+  align-items: center;
+  flex-direction: row; /* Row by default */
+  gap: 50px;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Fade-in Divs with Sequential Delay */
+.fade-in-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 1s ease, transform 1s ease;
+  margin-bottom: 30px;
+}
+
+/* Animation for Sequential Fade-in */
+.fade-in-div:nth-child(1) {
+  transition-delay: 0s; /* First div fades in immediately */
+}
+
+.fade-in-div:nth-child(2) {
+  transition-delay: 1s; /* 1 second after the first */
+}
+
+.fade-in-div:nth-child(3) {
+  transition-delay: 1.5s; /* 1.5 seconds after the second */
+}
+
+.fade-in-div:nth-child(4) {
+  transition-delay: 2s; /* 2 seconds after the third */
+}
+
+/* Additional hover effect if needed */
+.fade-in-div img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.fade-in-div:hover img {
+  transform: scale(1.1);
+}
+
+/* Fade-in visible effect */
+.fade-in-div.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-div.visible h3,
+.fade-in-div.visible p {
+  opacity: 1;
+}
+
+/* Footer Styling */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #2c2c2c; /* Dark grey color */
+  color: white;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 820px) {
+  /* Navbar menu adjustments for mobile */
+  .burger-menu {
+    display: flex; /* Show burger icon on mobile */
+  }
+
+  .navbar-menu ul {
+    display: none; /* Hide menu by default on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 110px;
+    right: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+    z-index: 10;
+  }
+
+  .navbar-menu ul.show {
+    display: flex;
+  }
+
+  .navbar-menu li {
+    margin: 0;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid white;
+    border-radius: 8px;
+  }
+
+  /* Main content adjustments for mobile */
+  .main-content {
+    display: flex;
+    flex-direction: column; /* Stack top divs in a column */
+    height: auto;
+  }
+
+  .left-div,
+  .right-div {
+    width: 100%; /* Full width for each div on mobile */
+    padding: 15px;
+  }
+
+  .right-posts-container {
+    flex-direction: column;
+  }
+
+  .right-post {
+    width: 100%; /* Full width for posts on mobile */
+  }
+
+  /* Container adjustments for fade-in divs on mobile */
+  .container {
+    flex-direction: column; /* Column layout on mobile */
+    align-items: center;
+  }
+
+  .fade-in-div {
+    width: 80%; /* Adjust width for better fit on mobile */
+    margin-bottom: 20px; /* Add spacing between items */
+  }
+}
